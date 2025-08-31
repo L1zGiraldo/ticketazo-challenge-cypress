@@ -6,5 +6,5 @@ Este proyecto contiene pruebas automatizadas para la plataforma **Ticketazo**, e
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT.  
-Consulta el archivo [LICENSE]([LICENSE]) para más información.
+Consulta el archivo [LICENSE]([https://github.com/L1zGiraldo/ticketazo-tests/blob/main/LICENSE]) para más información.
 
