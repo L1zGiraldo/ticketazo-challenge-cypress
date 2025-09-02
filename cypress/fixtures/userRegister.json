@@ -1,0 +1,134 @@
+{
+    "usuarioValido": {
+    "nombres": "Liz",
+    "apellido": "López Giraldo",
+    "telefono": "3286773344",
+    "dni": "97009123",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "01",
+    "mes": "01",
+    "anio": "1995",
+    "email": "liz@yopmail.com",
+    "confirmarEmail": "liz@yopmail.com",
+    "password": "pass4$%&!",
+    "repetirPassword": "pass4$%&!"
+}, 
+
+"usuarioSinDatos": {
+    "nombres": "",
+    "apellido": "",
+    "telefono": "",
+    "dni": "",
+    "provincia": "",
+    "localidad": "",
+    "dia": "",
+    "mes": "",
+    "anio": "",
+    "email": "",
+    "confirmarEmail": "",
+    "password": "",
+    "repetirPassword": ""
+  },
+
+  "usuarioDatosNoTienenFormato": {
+    "nombres": "Leidy",
+    "apellido": "Giraldo Noreña",
+    "telefono": "23456778",  
+    "dni": "4567865",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "05",
+    "mes": "06",
+    "anio": "1996",
+    "email": "liz@",
+    "confirmarEmail": "liz@yopmail.com",
+    "password": "3456",
+    "repetirPassword": "3456"
+  }, 
+ 
+  "usuarioDiferenteCorreo": {
+    "nombres": "Leidy Mitchel",
+    "apellido": "Giraldo Noreña",
+    "telefono": "3128167733",  
+    "dni": "99999999",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "05",
+    "mes": "06",
+    "anio": "1996",
+    "email": "liz@yopmail.com",
+    "confirmarEmail": "liz1@yopmail.com",
+    "password": "3456",
+    "repetirPassword": "3456"
+  }, 
+
+  "usuarioDiferentePassword": {
+    "nombres": "Leidy Mitchel",
+    "apellido": "Giraldo Noreña",
+    "telefono": "3128167733",  
+    "dni": "99999999",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "05",
+    "mes": "06",
+    "anio": "1996",
+    "email": "liz@yopmail.com",
+    "confirmarEmail": "liz@yopmail.com",
+    "password": "34567",
+    "repetirPassword": "345678"
+  },
+
+
+    "contraseñaSinFormato": {
+    "nombres": "Liz Dahianna",
+    "apellido": "López Giraldo",
+    "telefono": "3286773344",
+    "dni": "97009123",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "01",
+    "mes": "01",
+    "anio": "1995",
+    "email": "liz@yopmail.com",
+    "confirmarEmail": "liz@yopmail.com",
+    "password": "pass23",
+    "repetirPassword": "pass23"
+    },
+
+    "dniYaRegistrado": {
+    "nombres": "Liz Dahianna",
+    "apellido": "López Giraldo",
+    "telefono": "3286773344",
+    "dni": "23456777",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "01",
+    "mes": "01",
+    "anio": "1995",
+    "email": "lidurica@yopmail.com",
+    "confirmarEmail": "lidurica@yopmail.com",
+    "password": "passA4$%&!",
+    "repetirPassword": "passA4$%&!"
+    },
+
+    "correoYaRegistrado": {
+    "nombres": "Dahianna",
+    "apellido": "López Giraldo",
+    "telefono": "3286773344",
+    "dni": "97009123",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "01",
+    "mes": "01",
+    "anio": "1995",
+    "email": "lizgiraldo@utp.edu.co",
+    "confirmarEmail": "lizgiraldo@utp.edu.co",
+    "password": "passA4$%&!",
+    "repetirPassword": "passA4$%&!"
+    }
+
+
+
+
+}
