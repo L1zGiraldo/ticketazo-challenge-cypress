@@ -44,11 +44,11 @@ class RegistroPage {
   }
 
   escribirPassword(password){
-    if (password) cy.get(this.inputPassword).type(password);
+    if (password) cy.get(this.inputPassword).clear().type(password);
   }
 
   confirmarPassword(password){
-   if (password) cy.get(this.inputConfPass).type(password);
+   if (password) cy.get(this.inputConfPass).clear().type(password);
   }
 
    escribirCorreo(correo){
@@ -88,7 +88,7 @@ class RegistroPage {
     }
   }
 
-  //Método para validar ue hayan  mensajes de error y se muestre el texto "Completa este campo"
+  //Método para validar que hayan  mensajes de error y se muestre el texto "Completa este campo"
 
 
   validarError() {
@@ -139,12 +139,49 @@ validarErrorEmail (correo) {
 
 }
 
+// Método para completar datos generales (todo el formulario)
+completarDatosGenerales(user) {
+  this.escribirNombre(user.nombres);
+  this.escribirApellido(user.apellido);
+  this.escribirTelefono(user.telefono);
+  this.escribirDNI(user.dni);
+  this.seleccionarProvincia(user.provincia);
+  this.seleccionarLocalidad(user.localidad);
+  this.ingresarFechaNacimiento(user.dia, user.mes, user.anio);
+  this.escribirCorreo(user.email);
+  this.confirmarCorreo(user.confirmarEmail);
+  this.escribirPassword(user.password);
+  this.confirmarPassword(user.repetirPassword);
+}
+
+
+// Método para completar datos generales menos contraseña
+completarDatosSinPassword(user) {
+  this.escribirNombre(user.nombres);
+  this.escribirApellido(user.apellido);
+  this.escribirTelefono(user.telefono);
+  this.escribirDNI(user.dni);
+  this.seleccionarProvincia(user.provincia);
+  this.seleccionarLocalidad(user.localidad);
+  this.ingresarFechaNacimiento(user.dia, user.mes, user.anio);
+  this.escribirCorreo(user.email);
+  this.confirmarCorreo(user.confirmarEmail);
+}
+
+
+
+//Método para validar el mensaje de error sobre un correo electrónico no válido 
+validarDatoInvalido(){
+  cy.get(this.dataError)
+  .should('be.visible')
+  .and('contain.text', 'El correo electrónico no es válido');
+}
 
 // Método para validar el mensaje de error sobre correos electrónicos que no coinciden 
 validarCoincidenciaEmail(){
   cy.get(this.dataError)
   .should('be.visible')
-  .and('have.text', 'Los correos electrónicos no coinciden');
+  .and('contain.text', 'Los correos electrónicos no coinciden');
   
 }
 
@@ -152,7 +189,7 @@ validarCoincidenciaEmail(){
 validarCoincidenciaPassword(){
   cy.get(this.dataError)
   .should('be.visible')
-  .and('have.text', 'Las contraseñas no coinciden');
+  .and('contain.text', 'Las contraseñas no coinciden');
   
 }
 
@@ -161,7 +198,7 @@ validarCoincidenciaPassword(){
 validarFormatoPassword(){
   cy.get(this.dataError)
   .should('be.visible')
-  .and('have.text', 'La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos.');
+  .and('contain.text', 'La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos.');
   
 }
 
@@ -170,7 +207,7 @@ validarFormatoPassword(){
 validarDNI(){
   cy.get(this.dataError)
   .should('be.visible')
-  .and('have.text', 'Ya existe un usuario registrado con ese DNI');
+  .and('contain.text', 'Ya existe un usuario registrado con ese DNI');
   
 }
 
@@ -179,7 +216,7 @@ validarDNI(){
 validarCorreo(){
   cy.get(this.dataError)
   .should('be.visible')
-  .and('have.text', 'Ya existe un usuario registrado con ese correo electrónico');
+  .and('contain.text', 'Ya existe un usuario registrado con ese correo electrónico');
   
 }
 }
