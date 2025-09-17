@@ -20,7 +20,7 @@ cypress/
 ├── e2e/                 # Archivos de pruebas end-to-end
 │   └── registro_ticketazo.cy.js
 ├── fixtures/            # Datos de prueba (mock data)
-│   └── userRegister.json
+│   └── datos_registro.json
 ├── support/             # Comandos y Page Objects
 │   ├── pages/
 │   │   └── RegistroPage.js
@@ -60,7 +60,7 @@ ___
 
 1. 👨‍💻 Clonar el repositorio: 
 ```bash
-git clone git@github.com:L1zGiraldo/ticketazo-challenge-cypress.git
+git clone https://github.com/L1zGiraldo/ticketazo-challenge-cypress.git
 
 cd ticketazo-challenge-cypress
 ```
@@ -86,5 +86,5 @@ npx cypress run
 ___
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT.  
-Consulta el archivo [LICENSE](https://github.com/L1zGiraldo/ticketazo-tests/blob/main/LICENSE) para más información.
+Consulta el archivo [LICENSE](https://github.com/L1zGiraldo/ticketazo-challenge-cypress/blob/main/LICENSE) para más información.
 
