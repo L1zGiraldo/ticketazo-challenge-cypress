@@ -60,33 +60,34 @@ class RegistroPage {
    if (correo)  cy.get(this.inputConfirmcorreo).type(correo);
   }
 
-
-   // Métodos para dropdowns (funciona para <select> o dropdown custom)
-  seleccionarProvincia(provincia) {
-    if (provincia) {
-      cy.get(this.dropdownProvincia).then(($select) => {
-        if ($select.is('select')) {
-          cy.wrap($select).select(provincia);
-        } else {
-          cy.wrap($select).click();
-          cy.contains(provincia).click();
-        }
-      });
-    }
+// Método para seleccionar opción de provincia o localidad (génerico para otros test)
+  seleccionarOpcion(elemento, valor) {
+  if (valor) {
+    cy.get(elemento).then(($el) => {
+      if ($el.is('select')) {
+        // Caso <select> nativo
+        cy.wrap($el).select(valor);
+      } else {
+        // Caso dropdown custom
+        cy.wrap($el).click(); // abre el dropdown
+        cy.contains('li', valor)
+          .scrollIntoView()
+          .should('be.visible')
+          .click();
+      }
+    });
   }
+}
 
-  seleccionarLocalidad(localidad) {
-    if (localidad) {
-      cy.get(this.dropdownLocalidad).then(($select) => {
-        if ($select.is('select')) {
-          cy.wrap($select).select(localidad);
-        } else {
-          cy.wrap($select).click();
-          cy.contains(localidad).click();
-        }
-      });
-    }
-  }
+// Seleccionar provincia
+seleccionarProvincia(provincia) {
+  this.seleccionarOpcion(this.dropdownProvincia, provincia);
+}
+
+// Seleccionar localidad
+seleccionarLocalidad(localidad) {
+  this.seleccionarOpcion(this.dropdownLocalidad, localidad);
+}
 
   //Método para validar que hayan  mensajes de error y se muestre el texto "Completa este campo"
 
@@ -99,24 +100,23 @@ class RegistroPage {
   });
 }
 
-validarErrorFormato (campoSelector, valor) {
-  // Limpiar el campo
-  cy.get(campoSelector).clear();
+// método para validar el formato de algunos campos del formulario 
 
-  // Escribir valor si se pasa
-  if (valor) {
-    cy.get(campoSelector).type(valor);
-  }
+validarErrorFormato(campoSelector, valor) {
+  cy.get(campoSelector)
+    .clear()
+    .type(valor, { delay: 100 }) // escribe más despacio
+    .should('have.value', valor) // espera a que se escriba
+    .blur();
 
-  // Hacer blur para disparar validación
-  cy.get(campoSelector).blur();
-
-  // Buscar el mensaje de error (clase común) y validar el texto
-  cy.get(this.mensajeError, { timeout: 10000 })
+  cy.get(campoSelector)
+    .parents('form') // ajusta al contenedor correcto
+    .find(this.mensajeError)
     .should('be.visible')
     .and('contain.text', 'Haz coincidir el formato solicitado.');
 }
 
+// Método para la validación de un correo
 
 validarErrorEmail (correo) {
   // Limpiar el campo

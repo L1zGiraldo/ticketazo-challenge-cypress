@@ -1,4 +1,4 @@
-import RegistroPage from '../support/pages/RegistroPage';
+import RegistroPage from '../support/RegistroPage';
 import {generarCorreo, generarDNI} from '../support/utils';  // para validar data dinámica 
 
 describe('Pruebas de Registro en Ticketazo', () => {
@@ -7,24 +7,24 @@ describe('Pruebas de Registro en Ticketazo', () => {
 
   beforeEach(() => {
     cy.visit('https://ticketazo.com.ar/auth/registerUser'); // URL de prueba
-    cy.fixture('userRegister').then((fData) =>{
+    cy.fixture('datos_registro').then((fData) =>{
       data=fData;
     });
   });
 
   // Happy path
   it('Registro exitoso de usuario nuevo', () => {
-  // cargo la data de usuario válido fijo que esta en fixture
-  cy.fixture('userRegister').then((data) => {
     const baseUser = data.usuarioValido;
+    const correo = generarCorreo(); // un solo correo aleatorio
 
     // sobrescribo lo que necesito aleatorio
     const userConDatosAleatorios = {
       ...baseUser,
-      email: generarCorreo(),
-      confirmarEmail: generarCorreo(),
+      email: correo,
+      confirmarEmail: correo,
       dni: generarDNI()
     };
+
 
     // uso el método para llenar los datos generales 
     registroPage.completarDatosGenerales(userConDatosAleatorios);
@@ -39,7 +39,6 @@ describe('Pruebas de Registro en Ticketazo', () => {
       expect(interception.response.statusCode).to.eq(201);
     });
   });
-});
 
 
 
@@ -100,7 +99,7 @@ it('Validar mensaje de error al ingresar un correo electrónico inválido', () =
    it('Validar longitud mínima y criterios de complejidad de contraseña en registro', () => {
       registroPage.completarDatosSinPassword(data.contraseñaSinFormato);
 
-      const invalidPasswords = ['ab1@defg', 'Abcdef@#', 'Abcdef12']
+      const invalidPasswords = ['ab1@defg', 'Abcdef@#', 'Abcdef12', 'ab123']
       cy.wrap(invalidPasswords).each((pass) => {
       // escribir/limpiar usando los métodos del page object
       registroPage.escribirPassword(pass)          
@@ -114,9 +113,6 @@ it('Validar mensaje de error al ingresar un correo electrónico inválido', () =
       expect(interception.response.statusCode).to.not.eq(201)
        })
       registroPage.validarFormatoPassword()
-
-     
-      
 
       
   });
@@ -151,15 +147,14 @@ it('Validar mensaje de error al ingresar un correo electrónico inválido', () =
 
   it('Validar restricción de registro a menores de 18 años ', () => {
 
-     // cargo la data de usuario menor de edad  que esta en fixture
-  cy.fixture('userRegister').then((data) => {
     const baseUser = data.noRegistrarMenoresDe18;
+    const correo = generarCorreo(); // un solo correo aleatorio
 
     // sobrescribo lo que necesito aleatorio
     const userConDatosAleatorios = {
       ...baseUser,
-      email: generarCorreo(),
-      confirmarEmail: generarCorreo(),
+      email: correo,
+      confirmarEmail: correo,
       dni: generarDNI()
     };
 
@@ -177,7 +172,7 @@ it('Validar mensaje de error al ingresar un correo electrónico inválido', () =
   .to.not.eq(201);
     });
   });
-});
+
 
 
 
