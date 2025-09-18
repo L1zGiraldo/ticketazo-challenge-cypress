@@ -20,13 +20,7 @@ cy.get('[data-cy="input-email"]').type(email)
   cy.get('[data-cy="btn-login"]').click()
 
 
-cy.wait(1000) 
-cy.get('[data-cy="btn-ver-evento-1"]').click()
 
-
-cy.contains('button', 'Adquirir entrada')
-  .scrollIntoView()
-  .click({ force: true })
 
 
 
