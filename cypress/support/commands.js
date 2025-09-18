@@ -21,7 +21,7 @@ cy.get('[data-cy="input-email"]').type(email)
 
 
 cy.wait(1000) 
-cy.get('[data-cy="btn-ver-evento-4"]').click()
+cy.get('[data-cy="btn-ver-evento-1"]').click()
 
 
 cy.contains('button', 'Adquirir entrada')
