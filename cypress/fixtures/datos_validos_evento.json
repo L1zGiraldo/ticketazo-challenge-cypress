@@ -1,0 +1,18 @@
+{
+    "titulo": "Obra Circus",
+    "dia" : "20",
+    "mes" : "12",
+    "anio" : "2025",
+    "edad" : "ATP",
+    "genero" : "Feria",
+    "horarioHora" : "15",
+    "horarioMin" : "00",
+    "duracionEventoHora" : "04",
+    "duracionEventoMin" : "30",
+    "lugarEvento" : "Teatro Global",
+    "sala" : "Sala principal 1",
+    "descripcionEvento" : "Feria Artesanal",
+    "nombreEntrada" : "General",
+    "capacidad" : "30",
+    "precioEntrada" : "15000"
+}
