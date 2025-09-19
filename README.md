@@ -41,6 +41,7 @@ ___
 ## 🐞 Reporte de defectos
 
 Los defectos y mejoras encontrados durante la ejecución se registran y gestionan en un tablero público de Trello.
+👉 [Ver trello](https://trello.com/b/0NsNJUP3/grupo-3-tiketazo)
 
 ___
 
@@ -78,7 +79,7 @@ Modo interactivo (abre la app de Cypress):
 npx cypress open
 ```
 
-Modo headless (ejecuta todo en consola)
+Modo headless (ejecuta todo en consola):
 ```bash
 npx cypress run
 ``` 
