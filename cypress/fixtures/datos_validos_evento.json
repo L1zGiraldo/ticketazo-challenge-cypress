@@ -17,6 +17,14 @@
     "precioEntrada0" : "25000",
     "nombreEntrada1" : "General",
     "capacidad1" : "24",
-    "precioEntrada1" : "15000"
+    "precioEntrada1" : "15000",
 
+    "lugarEvento2" : "Otro",
+    "nombreLugar" :"Jalisco",
+    "calle" : "General Paz",
+    "altura" : "620",
+    "codigoPostal" : "5000",
+    "provincia" : "Córdoba{enter}",
+    "localidad" : "Córdoba{enter}",
+    "capacidad2" : "800"
 }

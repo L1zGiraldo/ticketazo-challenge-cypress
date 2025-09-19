@@ -1,6 +1,6 @@
 import datosValidos from '../fixtures/datos_validos_evento.json';
 import datosInvalidos from '../fixtures/datos_invalidos_evento.json';
-import { llenadoForm1, llenadoForm2, llenadoForm3, llenadoForm4 } from '../support/eventUtils';
+import { llenadoForm1, llenadoForm2, cargaEvento, cargaEntrada } from '../support/eventUtils';
 
 describe('Crear evento ', () => {
   
@@ -77,15 +77,14 @@ describe('Crear evento ', () => {
   // Happy path
   it('Carga de evento con éxito', () => {
 
-    //Carga de datos
-     const copiaDatos = { ...datosValidos };
-     
-     llenadoForm3(copiaDatos)
+     const datosEvento = { ...datosValidos };
+     //Carga de datos 
+     cargaEvento(datosEvento)
 
      cy.contains('button', 'Siguiente').click();
     
      //Carga de entradas
-     llenadoForm4();
+     cargaEntrada(datosEvento);
 
      cy.contains('button', 'Siguiente').click();
 

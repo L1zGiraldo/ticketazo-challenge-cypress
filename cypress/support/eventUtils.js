@@ -32,42 +32,42 @@ export function llenadoForm2 (data) {
     cy.get('input[name="precioEntrada1"]').type(data.precioEntrada1)    
 };
 
-export function llenadoForm3 (data) {
-    cy.get('[data-cy="input-titulo"]').type(data.titulo || '')
-    cy.get('[data-cy="datepicker-fecha"] [data-type="day"]').type(data.dia || '');
-    cy.get('[data-cy="datepicker-fecha"] [data-type="month"]').type(data.mes || '');
-    cy.get('[data-cy="datepicker-fecha"] [data-type="year"]').type(data.anio || '');
-    seleccionarOpcion("select-edad",data.edad || '')
-    seleccionarOpcion("select-genero",data.genero || '')
-    cy.get('[data-cy="input-horario"] [data-type="hour"]').type(data.horarioHora || '')
-    cy.get('[data-cy="input-horario"] [data-type="minute"]').type(data.horarioMin || '')
-    cy.get('[data-cy="input-duracion"] [data-type="hour"]').type(data.duracionEventoHora || '')
-    cy.get('[data-cy="input-duracion"] [data-type="minute"]').type(data.duracionEventoMin || '')
-    seleccionarOpcion("select-lugar-evento", 'Otro' || '')
-    cy.wait(1000)
+export function cargaEvento (data) {
+    cy.get('[data-cy="input-titulo"]').type(data.titulo);
+    cy.get('[data-cy="datepicker-fecha"] [data-type="day"]').type(data.dia);
+    cy.get('[data-cy="datepicker-fecha"] [data-type="month"]').type(data.mes);
+    cy.get('[data-cy="datepicker-fecha"] [data-type="year"]').type(data.anio);
+    seleccionarOpcion("select-edad",data.edad);
+    seleccionarOpcion("select-genero",data.genero);
+    cy.get('[data-cy="input-horario"] [data-type="hour"]').type(data.horarioHora);
+    cy.get('[data-cy="input-horario"] [data-type="minute"]').type(data.horarioMin);
+    cy.get('[data-cy="input-duracion"] [data-type="hour"]').type(data.duracionEventoHora);
+    cy.get('[data-cy="input-duracion"] [data-type="minute"]').type(data.duracionEventoMin);
+    seleccionarOpcion("select-lugar-evento", data.lugarEvento2);
+    cy.wait(1000);
     
-     cy.get('[data-cy="input-nombre-lugar"]').type('Jalisco');
-     cy.get('[data-cy="input-calle-lugar"]').type('Gral Paz ');
-     cy.get('[data-cy="input-altura-lugar"]').type('620');
-     cy.get('[data-cy="input-codigo-postal-lugar"]').type('5000');
+    //Datos del lugar
+     cy.get('[data-cy="input-nombre-lugar"]').type(data.nombreLugar);
+     cy.get('[data-cy="input-calle-lugar"]').type(data.calle);
+     cy.get('[data-cy="input-altura-lugar"]').type(data.altura);
+     cy.get('[data-cy="input-codigo-postal-lugar"]').type(data.codigoPostal);
 
-     cy.get('[aria-label="Provincia"]').click()
-     cy.get('[aria-label="Provincia"]').type('Córdoba{enter}');
-     cy.get('[aria-label="Provincia"]').click();
-     cy.get('[aria-label="Localidad"]').type('Córdoba{enter}');
-     cy.get('[data-cy="input-info"]').type( data.descripcionEvento  || '')
+     cy.get('[aria-label="Provincia"]').should('be.visible').click();
+     cy.get('[aria-label="Provincia"]').type(data.provincia);
+     cy.get('[aria-label="Localidad"]').should('be.visible').click();
+     cy.get('[aria-label="Localidad"]').type(data.localidad);
+     cy.get('[data-cy="input-info"]').type( data.descripcionEvento);
 
-    
-    
 };
 
-export function llenadoForm4 (data) {
-    selectPorLabel('Nombre de la entrada','General' || '')
-     cy.get('[aria-label="Capacidad"]').click()
-     cy.get('[aria-label="Capacidad"]').type('1200{enter}');
-     cy.get('[aria-label="Precio Entrada"]').click()
-     cy.get('[aria-label="Precio Entrada"]').type('30000{enter}');    
+export function cargaEntrada (data) {
+    selectPorLabel('Nombre de la entrada', data.nombreEntrada1);
+     cy.get('[aria-label="Capacidad"]').click();
+     cy.get('[aria-label="Capacidad"]').type(data.capacidad2);
+     cy.get('[aria-label="Precio Entrada"]').click();
+     cy.get('[aria-label="Precio Entrada"]').type(data.precioEntrada1);    
 };
+
 
 const selectPorLabel = (labelText, valor) => {
   // Abrimos el menú buscando el botón que contiene el label con ese texto
