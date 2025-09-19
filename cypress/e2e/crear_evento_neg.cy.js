@@ -79,19 +79,21 @@ describe('Carga de Nuevo Evento', () => {
   it('Carga de nuevo evento con éxito', () => {
 
     //inicio llenadoForm1
-     cy.get('[data-cy="input-titulo"]').type(data.titulo || '')
-     cy.get('[data-cy="datepicker-fecha"] [data-type="day"]').type(data.dia || '');
-     cy.get('[data-cy="datepicker-fecha"] [data-type="month"]').type(data.mes || '');
-     cy.get('[data-cy="datepicker-fecha"] [data-type="year"]').type(data.anio || '');
-     seleccionarOpcion("select-edad",data.edad || '')
-     seleccionarOpcion("select-genero", data.genero || '')
-     cy.get('[data-cy="input-horario"] [data-type="hour"]').type(data.horarioHora || '')
-     cy.get('[data-cy="input-horario"] [data-type="minute"]').type(data.horarioMin || '')
-     cy.get('[data-cy="input-duracion"] [data-type="hour"]').type(data.duracionEventoHora || '')
-     cy.get('[data-cy="input-duracion"] [data-type="minute"]').type(data.duracionEventoMin || '')
-     seleccionarOpcion("select-lugar-evento", data.lugarEvento || '')
+     cy.get('[data-cy="input-titulo"]').type('Festival 2025' || '')
+     cy.get('[data-cy="datepicker-fecha"] [data-type="day"]').type('19' || '');
+     cy.get('[data-cy="datepicker-fecha"] [data-type="month"]').type('10' || '');
+     cy.get('[data-cy="datepicker-fecha"] [data-type="year"]').type('2025' || '');
+     seleccionarOpcion("select-edad",'ATP' || '')
+     seleccionarOpcion("select-genero", 'Festival' || '')
+     cy.get('[data-cy="input-horario"] [data-type="hour"]').type('14' || '')
+     cy.get('[data-cy="input-horario"] [data-type="minute"]').type('00' || '')
+     cy.get('[data-cy="input-duracion"] [data-type="hour"]').type('06' || '')
+     cy.get('[data-cy="input-duracion"] [data-type="minute"]').type('00' || '')
+     seleccionarOpcion("select-lugar-evento", 'Otro' || '')
      cy.wait(1000)
-    
+    //fin llenadoForm1
+     
+    //Datos del lugar
      cy.get('[data-cy="input-nombre-lugar"]').type('Jalisco');
      cy.get('[data-cy="input-calle-lugar"]').type('Gral Paz ');
      cy.get('[data-cy="input-altura-lugar"]').type('620');
@@ -100,12 +102,11 @@ describe('Carga de Nuevo Evento', () => {
 
      cy.get('[aria-label="Provincia"]').click()
      cy.get('[aria-label="Provincia"]').type('Córdoba{enter}');
-     cy.get('[aria-label="Provincia"]').eq(0).click(); // Abre el menú
+     cy.get('[aria-label="Provincia"]').click();
      cy.get('[aria-label="Localidad"]').type('Córdoba{enter}');
-     cy.get('[aria-label="Localidad"]').should('have.length', 1).type('Cruz del Eje{enter}');//.click(); // Abre el menú
      cy.get('[aria-label="Localidad"]').type('Córdoba{enter}');
-     cy.get('[data-cy="input-info"]').type(data.descripcionEvento || '')
-    //fin llenadoForm1
+     cy.get('[data-cy="input-info"]').type( 'El festival mas esperado del año' || '')
+    
 
      cy.contains('button', 'Siguiente').click();
 
