@@ -1,6 +1,6 @@
 import datosValidos from '../fixtures/datos_validos_evento.json';
 import datosInvalidos from '../fixtures/datos_invalidos_evento.json';
-import { llenadoForm1 } from '../support/eventUtils';
+import { llenadoForm1, llenadoForm2 } from '../support/eventUtils';
 
 describe('Crear evento ', () => {
   
@@ -35,6 +35,17 @@ describe('Crear evento ', () => {
     cy.contains('El título debe tener menos de 50 caracteres.').should('be.visible');
   })
 
+  it('Validar mensaje de error al colocar caracteres especiales en el campo Título del evento ', () => {
+    const copiaDatos = { ...datosValidos };
+    copiaDatos.titulo = datosInvalidos.tituloCaracteresEspeciales; 
+
+    llenadoForm1(copiaDatos);
+
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //validar mensaje de error
+    cy.contains('El título contiene caracteres inválidos.').should('be.visible');
+  })
+
   it('Validar mensaje de error al colocar una fecha menor a 24 horas a partir de la fecha actual', () => {
     const copiaDatos = { ...datosValidos };
     copiaDatos.dia = datosInvalidos.fechaInvalida.dia 
@@ -48,8 +59,22 @@ describe('Crear evento ', () => {
     cy.contains('La fecha debe ser al menos 24 horas a partir de hoy.').should('be.visible');
   })
 
-})
+  it('LLenado form2', () => {
+    
+    llenadoForm1(datosValidos);
 
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //form2
+    llenadoForm2(datosValidos)
+    cy.contains('button', 'Siguiente').click();
+    //form 3
+    /*cy.get('input[type="file"][accept="image/*"]').selectFile('cypress/fixtures/concierto400x400.jpg', { force: true });
+    cy.get('img[alt="Imagen del evento"]').should('have.attr', 'src').and('not.include', 'image-coming-soon'); // verifica que ya no es la imagen por defecto
+    cy.contains('button', 'Siguiente').click();
+    */
+  })
+
+})
 
 describe('Carga de Nuevo Evento', () => {
   
@@ -76,7 +101,7 @@ describe('Carga de Nuevo Evento', () => {
   });
 
   // Happy path
-  it('Carga de nuevo evento con éxito', () => {
+  it.only('Carga de nuevo evento con éxito', () => {
 
     //inicio llenadoForm1
      cy.get('[data-cy="input-titulo"]').type('Festival 2025' || '')
@@ -142,7 +167,6 @@ describe('Carga de Nuevo Evento', () => {
   // Selecciona la opción por texto visible
   cy.contains('li', valor).click(); 
   };
-
 
 
 

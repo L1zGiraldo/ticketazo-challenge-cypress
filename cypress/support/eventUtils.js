@@ -17,6 +17,21 @@ export function llenadoForm1 (data) {
     
 };
 
+export function llenadoForm2 (data) {
+    cy.contains('button', data.nombreEntrada0).should('be.visible').click();
+    selectPorLabel('Nombre de la entrada',data.nombreEntrada0 || '')
+    // Primera entrada
+    //cy.get('input[name="capacidadEntrada0"]').clear().type('22')
+    cy.get('input[name="precioEntrada0"]').type(data.precioEntrada0)
+    cy.contains('button', 'Agregar Entrada').should('be.visible').click();
+    //Segunda entrada
+    cy.contains('button', data.nombreEntrada1).should('be.visible').click();
+    cy.get(`button:has(> label:contains("Nombre de la entrada"))`).eq(1).click()
+    cy.contains('[role="option"]', data.nombreEntrada1).click({ force: true });
+    //cy.get('input[name="capacidadEntrada1"]').type('{selectAll}{backspace}').type('38')
+    cy.get('input[name="precioEntrada1"]').type(data.precioEntrada1)    
+};
+
 
 const selectPorLabel = (labelText, valor) => {
   // Abrimos el menú buscando el botón que contiene el label con ese texto

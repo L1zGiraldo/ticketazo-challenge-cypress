@@ -1,8 +1,9 @@
 {
   "tituloExcedente": "Lorem ipsum accusamus exercitation consectetur quasi sed",
+  "tituloCaracteresEspeciales": "#Lorem$",
   "fechaInvalida": { 
     "dia": "20", 
-      "mes": "12", 
-      "anio": "2020" 
+    "mes": "12", 
+    "anio": "2020" 
   }
 }
