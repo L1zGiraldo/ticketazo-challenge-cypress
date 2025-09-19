@@ -1,6 +1,6 @@
 import datosValidos from '../fixtures/datos_validos_evento.json';
 import datosInvalidos from '../fixtures/datos_invalidos_evento.json';
-import { llenadoForm1, llenadoForm2 } from '../support/eventUtils';
+import { llenadoForm1, llenadoForm2, llenadoForm3, llenadoForm4 } from '../support/eventUtils';
 
 describe('Crear evento ', () => {
   
@@ -74,100 +74,29 @@ describe('Crear evento ', () => {
     */
   })
 
-})
-
-describe('Carga de Nuevo Evento', () => {
-  
-
-  beforeEach(() => {
-    cy.visit('https://ticketazo.com.ar/auth/login');
-    
-     cy.get('[data-cy="input-email"]').type('teatroglobal@yopmail.com');
-     cy.get('[data-cy="input-password"]').type('Contra+123');
-     cy.get('[data-cy="btn-login"]').click()
-     cy.url().should('not.include', '/login');
-     cy.wait(2000)
-
-     cy.get('body').then(($body) => {
-      if ($body.find('button[aria-label="Toggle menu"]').is(':visible')) {
-        cy.get('button[aria-label="Toggle menu"]').eq(0).click();
-        cy.get(':nth-child(2) > .pb-4').click()
-        } else {
-        cy.contains('a', 'Cargar Evento').should('be.visible').click();
-      }
-    });
-    
-    cy.url().should('include', '/newEvent');
-  });
-
   // Happy path
-  it.only('Carga de nuevo evento con éxito', () => {
+  it('Carga de evento con éxito', () => {
 
-    //inicio llenadoForm1
-     cy.get('[data-cy="input-titulo"]').type('Festival 2025' || '')
-     cy.get('[data-cy="datepicker-fecha"] [data-type="day"]').type('19' || '');
-     cy.get('[data-cy="datepicker-fecha"] [data-type="month"]').type('10' || '');
-     cy.get('[data-cy="datepicker-fecha"] [data-type="year"]').type('2025' || '');
-     seleccionarOpcion("select-edad",'ATP' || '')
-     seleccionarOpcion("select-genero", 'Festival' || '')
-     cy.get('[data-cy="input-horario"] [data-type="hour"]').type('14' || '')
-     cy.get('[data-cy="input-horario"] [data-type="minute"]').type('00' || '')
-     cy.get('[data-cy="input-duracion"] [data-type="hour"]').type('06' || '')
-     cy.get('[data-cy="input-duracion"] [data-type="minute"]').type('00' || '')
-     seleccionarOpcion("select-lugar-evento", 'Otro' || '')
-     cy.wait(1000)
-    //fin llenadoForm1
+    //Carga de datos
+     const copiaDatos = { ...datosValidos };
      
-    //Datos del lugar
-     cy.get('[data-cy="input-nombre-lugar"]').type('Jalisco');
-     cy.get('[data-cy="input-calle-lugar"]').type('Gral Paz ');
-     cy.get('[data-cy="input-altura-lugar"]').type('620');
-     cy.get('[data-cy="input-codigo-postal-lugar"]').type('5000');
-     
-
-     cy.get('[aria-label="Provincia"]').click()
-     cy.get('[aria-label="Provincia"]').type('Córdoba{enter}');
-     cy.get('[aria-label="Provincia"]').click();
-     cy.get('[aria-label="Localidad"]').type('Córdoba{enter}');
-     cy.get('[aria-label="Localidad"]').type('Córdoba{enter}');
-     cy.get('[data-cy="input-info"]').type( 'El festival mas esperado del año' || '')
-    
+     llenadoForm3(copiaDatos)
 
      cy.contains('button', 'Siguiente').click();
-
+    
      //Carga de entradas
-     selectPorLabel('Nombre de la entrada','General' || '')
-     cy.get('[aria-label="Capacidad"]').click()
-     cy.get('[aria-label="Capacidad"]').type('1200{enter}');
-     cy.get('[aria-label="Precio Entrada"]').click()
-     cy.get('[aria-label="Precio Entrada"]').type('30000{enter}');
-     //cy.contains('button', 'Agregar Entrada').click();
+     llenadoForm4();
 
      cy.contains('button', 'Siguiente').click();
 
      //Carga de imagen
-     cy.wait(6000)
-     cy.contains('button', 'Cargar Imagen Evento').click();
+     cy.wait(4000)
+     cy.get('input[type="file"][accept="image/*"]').selectFile('cypress/fixtures/concierto400x400.jpg', { force: true });
 
      cy.contains('button', 'Siguiente').click();
 
      //Confirmar evento nuevo
      cy.contains('button', 'Confirmar').click();
   });
-
-  const selectPorLabel = (labelText, valor) => {
-  // Abrimos el menú buscando el botón que contiene el label con ese texto
-  cy.get(`button:has(> label:contains("${labelText}"))`).click();
-  // Seleccionamos la opción
-  cy.contains('[role="option"]', valor).click({ force: true });
-  };
-
-  const seleccionarOpcion = (dataCy, valor) => {
-  cy.get(`[data-cy="${dataCy}"]`).click(); // Abre el menú
-  // Selecciona la opción por texto visible
-  cy.contains('li', valor).click(); 
-  };
-
-
 
 });
