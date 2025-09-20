@@ -59,7 +59,59 @@ describe('Crear evento ', () => {
     cy.contains('La fecha debe ser al menos 24 horas a partir de hoy.').should('be.visible');
   })
 
-  it('LLenado form2', () => {
+  it('Validar mensaje de error al ingresar una duración de evento de 00:00 ', () => {
+    const copiaDatos = { ...datosValidos };
+    copiaDatos.duracionEventoHora = datosInvalidos.duracionHoraInv 
+    copiaDatos.duracionEventoMin = datosInvalidos.duracionMinInv 
+    
+    llenadoForm1(copiaDatos);
+
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //validar mensaje de error
+    cy.contains('Debe ingresar una duración válida para el evento.').should('be.visible');
+  })
+
+  it('Validar error al ingresar descripción con menos de 10 caracteres', () => {
+    const copiaDatos = { ...datosValidos };
+    copiaDatos.descripcionEvento = datosInvalidos.descripcionCorta 
+    
+    llenadoForm1(copiaDatos);
+
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //validar mensaje de error
+    cy.contains('La descripción debe tener al menos 10 caracteres').should('be.visible');
+  })
+
+  it('Validar que no se acepte un precio negativo en el campo Precio de entrada', () => {
+    const copiaDatos = { ...datosValidos };
+    copiaDatos.precioEntrada0 = datosInvalidos.entradaNegativa 
+    
+    llenadoForm1(datosValidos);
+
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //form2
+    llenadoForm2(copiaDatos)
+    cy.contains('button', 'Siguiente').click();
+    //validar mensaje de error
+    cy.contains('El precio no puede ser negativo.').should('be.visible');
+  })
+
+  it('Validar que no se acepte un precio elevado en el campo Precio de entrada', () => {
+    const copiaDatos = { ...datosValidos };
+    copiaDatos.precioEntrada0 = datosInvalidos.entradaElevada 
+    
+    llenadoForm1(datosValidos);
+
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //form2
+    llenadoForm2(copiaDatos)
+    cy.contains('button', 'Siguiente').click();
+    //validar mensaje de error
+    cy.contains('El precio excede el monto permitido').should('be.visible');
+  })
+
+
+  it('Validar mensaje de error al subir una imagen con formato .png ', () => {
     
     llenadoForm1(datosValidos);
 
@@ -67,11 +119,25 @@ describe('Crear evento ', () => {
     //form2
     llenadoForm2(datosValidos)
     cy.contains('button', 'Siguiente').click();
+    cy.wait(4000)
     //form 3
-    /*cy.get('input[type="file"][accept="image/*"]').selectFile('cypress/fixtures/concierto400x400.jpg', { force: true });
-    cy.get('img[alt="Imagen del evento"]').should('have.attr', 'src').and('not.include', 'image-coming-soon'); // verifica que ya no es la imagen por defecto
+    cy.get('input[type="file"][accept="image/*"]').selectFile('cypress/fixtures/carnival.png', { force: true });
+    cy.contains('La imagen debe ser en formato .jpg (.jpeg).').should('be.visible');
+  })
+
+  it('Validar mensaje de error al subir una imagen con dimensiones rectangulares', () => {
+    
+    llenadoForm1(datosValidos);
+
+    cy.contains('button', 'Siguiente').should('be.visible').click();
+    //form2
+    llenadoForm2(datosValidos)
     cy.contains('button', 'Siguiente').click();
-    */
+    cy.wait(4000)
+    //form 3
+    cy.get('input[type="file"][accept="image/*"]').selectFile('cypress/fixtures/imagHorizontal.jpg', { force: true });
+    cy.contains('La imagen debe ser cuadrada (mismo ancho y alto).').should('be.visible');
+
   })
 
   // Happy path
