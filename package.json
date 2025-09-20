@@ -8,8 +8,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Este proyecto forma parte del challenge de XAcademy, cuyo propósito es poner en práctica la elaboración de planes de prueba y la automatización de casos funcionales con Cypress, aplicando buenas prácticas de reporte de defectos  y de creación de scripts de pruebas.",
   "devDependencies": {
     "cypress": "^14.5.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L1zGiraldo/ticketazo-challenge-cypress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/L1zGiraldo/ticketazo-challenge-cypress/issues"
+  },
+  "homepage": "https://github.com/L1zGiraldo/ticketazo-challenge-cypress#readme"
 }
