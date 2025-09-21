@@ -74,6 +74,13 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado en tu máquina:
 
 - Git
 
+## 👉 Nota: 
+Para ejecutar las pruebas de accesibilidad  es necesario instalar esto en cypress:
+
+- npm install cypress --save-dev
+- npm install cypress-axe --save-dev
+- npm install cypress-plugin-tab --save-dev
+- npm install cypress-real-events --save-dev
 ___
 
 ## ⚙️ Instalación y ejecución
