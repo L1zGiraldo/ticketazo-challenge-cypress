@@ -10,9 +10,22 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
+
+ Cypress.Commands.add('loginclientcompra', (email, password) => { 
+
+    cy.visit('https://ticketazo.com.ar/auth/login')
+
+cy.get('[data-cy="input-email"]').type(email)
+  cy.get('[data-cy="input-password"]').type(password)
+  cy.get('[data-cy="btn-login"]').click()
+
+
+
+
+
+
+ })
+
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

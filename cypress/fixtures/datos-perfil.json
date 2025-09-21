@@ -1,0 +1,16 @@
+{
+
+"usuarioValido" : {
+"email": "sol.gayarin@gmail.com"
+},
+
+"pruebasPass" : {
+    "mailAlternativo" : "correodepruebas.solg@gmail.com",
+    "passCorrectaAlternativa" : "Hola123.",
+    "passIncorrecta" : "Estrella1",
+    "passIncorrecta2" : "Estrella2",
+    "passBug" : "Hola111.",
+    "passMal" : "estrellas"
+}
+
+}

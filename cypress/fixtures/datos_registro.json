@@ -3,16 +3,16 @@
     "nombres": "Liz",
     "apellido": "López Giraldo",
     "telefono": "3286773344",
-    "dni": "97009123",
+    "dni": "97009129",
     "provincia": "Formosa",
     "localidad": "Buena Vista",
     "dia": "01",
     "mes": "01",
     "anio": "1995",
-    "email": "liz@yopmail.com",
-    "confirmarEmail": "liz@yopmail.com",
-    "password": "pass4$%&!",
-    "repetirPassword": "pass4$%&!"
+    "email": "lizym@yopmail.com",
+    "confirmarEmail": "lizym@yopmail.com",
+    "password": "pass4$%&!M",
+    "repetirPassword": "pass4$%&!M"
 }, 
 
 "usuarioSinDatos": {
@@ -46,6 +46,23 @@
     "password": "3456",
     "repetirPassword": "3456"
   }, 
+
+  "usuarioCorreInvalido":{
+    "nombres": "Liz Dahianna",
+    "apellido": "López Giraldo",
+    "telefono": "3286773344",  
+    "dni": "97009123",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "05",
+    "mes": "06",
+    "anio": "1996",
+    "email": "usuario@correo",
+    "confirmarEmail": "usuario@correo",
+    "password": "Pass4$%&!12",
+    "repetirPassword": "Pass4$%&!12"
+
+  },
  
   "usuarioDiferenteCorreo": {
     "nombres": "Leidy Mitchel",
@@ -84,16 +101,14 @@
     "nombres": "Liz Dahianna",
     "apellido": "López Giraldo",
     "telefono": "3286773344",
-    "dni": "97009123",
+    "dni": "67009123",
     "provincia": "Formosa",
     "localidad": "Buena Vista",
     "dia": "01",
     "mes": "01",
     "anio": "1995",
-    "email": "liz@yopmail.com",
-    "confirmarEmail": "liz@yopmail.com",
-    "password": "pass23",
-    "repetirPassword": "pass23"
+    "email": "dakot@yopmail.com",
+    "confirmarEmail": "dakot@yopmail.com"
     },
 
     "dniYaRegistrado": {
@@ -126,6 +141,23 @@
     "confirmarEmail": "lizgiraldo@utp.edu.co",
     "password": "passA4$%&!",
     "repetirPassword": "passA4$%&!"
+    }, 
+
+
+"noRegistrarMenoresDe18": {
+    "nombres": "Stefanny",
+    "apellido": "Giraldo",
+    "telefono": "3286773344",
+    "dni": "23456778",
+    "provincia": "Formosa",
+    "localidad": "Buena Vista",
+    "dia": "05",
+    "mes": "06",
+    "anio": "2018",
+    "email": "stefas8@yopmail.com",
+    "confirmarEmail": "stefas8@yopmail.com",
+    "password": "Pass4$%&!12",
+    "repetirPassword": "Pass4$%&!12"
     }
 
 
