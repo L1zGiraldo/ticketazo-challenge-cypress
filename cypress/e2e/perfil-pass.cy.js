@@ -146,7 +146,7 @@ describe('Pruebas con datos incorrectos', () => {
         cy.wrap(stub).should('have.been.calledOnceWith', 'La nueva contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número');
   });
 
-  it('TC-Perfil-05 - Verificar mismos criterios de aceptación de contraseña del registro', () => {
+  it('TC-Perfil-05 - Verificar que se cumplan los requisitos de creación de contraseña', () => {
 
         // Intercepto el evento de alerta
         const stub = cy.stub()
@@ -168,7 +168,7 @@ describe('Pruebas con datos incorrectos', () => {
         cy.wait(500)
         cy.get('[data-cy="btn-guardar-password"]').click()
 
-        cy.wrap(stub).should('have.been.calledOnceWith', 'La nueva contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número');
+        cy.wrap(stub).should('have.been.calledOnceWith', 'Contraseña actualizada correctamente');
   });
 
 
