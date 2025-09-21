@@ -10,7 +10,10 @@
   "license": "ISC",
   "description": "Este proyecto forma parte del challenge de XAcademy, cuyo propósito es poner en práctica la elaboración de planes de prueba y la automatización de casos funcionales con Cypress, aplicando buenas prácticas de reporte de defectos  y de creación de scripts de pruebas.",
   "devDependencies": {
-    "cypress": "^14.5.4"
+    "cypress": "^14.5.4",
+    "cypress-axe": "^1.7.0",
+    "cypress-plugin-tab": "^1.0.5",
+    "cypress-real-events": "^1.15.0"
   },
   "repository": {
     "type": "git",
