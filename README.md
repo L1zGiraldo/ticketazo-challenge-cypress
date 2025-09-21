@@ -17,16 +17,35 @@ ___
 ## 🗂️ Estructura del proyecto
 ```bash
 cypress/
-├── e2e/                 # Archivos de pruebas end-to-end
-│   └── registro_ticketazo.cy.js
-├── fixtures/            # Datos de prueba (mock data)
-│   └── datos_registro.json
-├── support/             # Comandos y Page Objects
-│   ├── pages/
-│   │   └── RegistroPage.js
-│   └── commands.js
-├── cypress.config.js    # Configuración principal de Cypress
-│── README.md
+├── e2e/                           # Pruebas end-to-end
+│   ├── Accesibilidad_1.cy.js
+│   ├── Test_case_compras.cy.js
+│   ├── crear_evento_neg.cy.js
+│   ├── filtro_eventos.cy.js
+│   ├── login.cy.js
+│   ├── perfil-pass.cy.js
+│   └── registro_comprador.cy.js
+│
+├── fixtures/                      # Datos de prueba y recursos
+│   ├── carnival.png
+│   ├── concierto400x400.jpg
+│   ├── datos-perfil.json
+│   ├── datos_invalidos_evento.json
+│   ├── datos_login.json
+│   ├── datos_registro.json
+│   ├── datos_validos_evento.json
+│   ├── estado_alternado.json
+│   └── imagHorizontal.jpg
+│
+├── screenshots/                   # Evidencias de ejecución (screenshots)
+│
+└── support/                       # Soporte y utilidades para los tests
+    ├── FiltroPage.js              # Page Object para filtros
+    ├── RegistroPage.js            # Page Object para registro
+    ├── commands.js                # Custom commands de Cypress
+    ├── e2e.js                     # Configuración global de tests e2e
+    ├── eventUtils.js              # Funciones utilitarias para eventos
+    └── utils.js                   # Funciones utilitarias generales
 
 ```
 ___
